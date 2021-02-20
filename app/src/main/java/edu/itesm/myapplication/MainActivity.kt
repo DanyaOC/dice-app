@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.i("edu.itesm.daec", "demostración log")
         mensaje.text ="Inicio"
-
         tira_dado()
     }
 
@@ -24,15 +23,15 @@ class MainActivity : AppCompatActivity() {
             roll_dice.setOnClickListener {
                 if (tiros <= 6) {
                     var jugador: Int
-                    val rand = Random.nextInt(1, 7)
-                    if (tiros.rem(2) == 1) {
+                    val rand = Random.nextInt(1, 7)                                     //Números random entre 1 y 6
+                if (tiros.rem(2) == 1) {                                                      //Se usa el operador módulo para identificar al jugador
                         jugador = 1
-                        cont1 += rand
+                        cont1 += rand                                                               //Contador de puntuación del jugador 1
                     } else {
                         jugador = 2
-                        cont2 += rand
+                        cont2 += rand                                                               //Contador de puntuación del jugador 2
                     }
-                    mensaje.text = "Jugador: $jugador, Tiro #${tiros++}: $rand"
+                    mensaje.text = "Jugador: $jugador, Tiro #${tiros++}: $rand"                     //Display de tiro actual
                 } else {
                     if (cont1 > cont2){
                         mensaje.text ="Gana el Jugador 1: $cont1"
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                         mensaje.text ="Gana el Jugador 2: $cont2"
                     } else {
                         mensaje.text ="Empate"
-                    }
+            }                                                                                       //Reinicio del juego
                     tiros = 1
                     cont1 = 0
                     cont2 = 0
